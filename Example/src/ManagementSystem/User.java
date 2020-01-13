@@ -29,6 +29,5 @@ public class User {
 				.append(type)
 				.append("}")
 				.toString();
-	
 	}
 }

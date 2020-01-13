@@ -1,6 +1,5 @@
 package ManagementSystem;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,25 +17,33 @@ public class TaskManagementSystem {
 		tasks = new HashMap<>();
 	}
 	
-	public void createUser(int id,String name, UserType type) {
-		if(users.containsKey(id)) {
-			System.out.println("Bu id'e sahip kullanici var.");
-			return;
-		}
-		
+	public void createUser(String name, UserType type) {
+		int id = users.size();
 		users.put(id, new User(id, name, type));
 		System.out.println(users.get(id));
 	}
 	
-	public void createTask(int id,String name,User user, TaskStatus status,TaskPriority priority ) {
-		if(tasks.containsKey(id)) {
-			System.out.println("Bu id'e sahip task var.");
+	public void createTask(String name,int userId, TaskStatus status,TaskPriority priority ) {
+		if(users.isEmpty())
+		{
+			System.out.println("Önce kullanıcı oluşturunuz.");
+			return;
+		}
+		int id = users.size();
+		tasks.put(id, new Task(id, name, userId, status, priority));
+		System.out.println(tasks.get(id));
+
+	}
+	public void getAllUsers() {
+		if (users.isEmpty()) {
+			System.out.println("Kullanıcı Yok");
 			return;
 		}
 
-		tasks.put(id, new Task(id, name, user, status, priority));
-		System.out.println(tasks.get(id));
-
+		for(Map.Entry<Integer, User> e:users.entrySet()) {
+			System.out.println(e.getKey());
+			System.out.println(e.getValue());
+		}
 	}
 	
 	public void getAllTasks() {
@@ -50,14 +57,14 @@ public class TaskManagementSystem {
 		}	
 	}
 	
-	public void updateUser(int id,User user) {
+	public void updateUser(int id, int userId) {
 		if (!tasks.containsKey(id)) {
 			System.out.println("Task yok");
 			return;
 		} 
 		
 		Task task = tasks.get(id);
-		task.setUser(user);
+		task.setUser(userId);
 		System.out.println(task);
 	}
 	

@@ -5,15 +5,15 @@ import java.util.Date;
 public class Task {
 	private int id;
 	private String name;
-	private User user;
+	private int userId;
 	private TaskStatus status;
 	private TaskPriority priority;
 	private Date updateDate;
 	
-	public Task(int id, String name, User user, TaskStatus status, TaskPriority priority) {
+	public Task(int id, String name, int userId, TaskStatus status, TaskPriority priority) {
 		this.id = id;
 		this.name = name;
-		this.user = user;
+		this.userId = userId;
 		this.status = status;
 		this.priority = priority;
 		this.updateDate = new Date();
@@ -22,7 +22,8 @@ public class Task {
 	public String toString() {
 		return new StringBuilder()
 				.append("Task{")
-				.append(user)
+				.append("userId = ")
+				.append(userId)
 				.append(", name = ")
 				.append(name)
 				.append(", status = ")
@@ -35,11 +36,11 @@ public class Task {
 				.toString();
 	}
 	
-	public User getUser() {
-		return user;
+	public int getUser() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(int userId) {
+		this.userId = userId;
 		updateDate = new Date();
 	}
 	public TaskStatus getStatus() {
