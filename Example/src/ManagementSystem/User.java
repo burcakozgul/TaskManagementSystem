@@ -22,8 +22,9 @@ public class User {
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("User{")
-				.append("name = ")
+				.append("User Id = ")
+				.append(id)
+				.append(" {name = ")
 				.append(name)
 				.append(", type = ")
 				.append(type)

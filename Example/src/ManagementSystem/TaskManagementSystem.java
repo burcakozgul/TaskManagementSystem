@@ -27,21 +27,27 @@ public class TaskManagementSystem {
 		if(users.isEmpty())
 		{
 			System.out.println("Önce kullanıcı oluşturunuz.");
+			System.out.println("---------------------------------------");
 			return;
 		}
-		int id = users.size();
+		else if(!users.containsKey(userId))
+		{
+			System.out.println("Böyle bir kullanıcı yok");
+			System.out.println("---------------------------------------");
+			return;
+		}
+		int id = tasks.size();
 		tasks.put(id, new Task(id, name, userId, status, priority));
 		System.out.println(tasks.get(id));
-
 	}
 	public void getAllUsers() {
 		if (users.isEmpty()) {
 			System.out.println("Kullanıcı Yok");
+			System.out.println("---------------------------------------");
 			return;
 		}
 
 		for(Map.Entry<Integer, User> e:users.entrySet()) {
-			System.out.println(e.getKey());
 			System.out.println(e.getValue());
 		}
 	}
@@ -49,6 +55,7 @@ public class TaskManagementSystem {
 	public void getAllTasks() {
 		if (tasks.isEmpty()) {
 			System.out.println("Task Yok");
+			System.out.println("---------------------------------------");
 			return;
 		}
 
@@ -71,6 +78,7 @@ public class TaskManagementSystem {
 	public void updateStatus(int id,TaskStatus status) {
 		if (!tasks.containsKey(id)) {
 			System.out.println("Task yok");
+			System.out.println("---------------------------------------");
 			return;
 		} 
 		
@@ -81,6 +89,7 @@ public class TaskManagementSystem {
 	public void updatePriority(int id,TaskPriority priority) {
 		if (!tasks.containsKey(id)) {
 			System.out.println("Task yok");
+			System.out.println("---------------------------------------");
 			return;
 		} 
 
@@ -92,5 +101,6 @@ public class TaskManagementSystem {
 	public User getUserbyId(int i) {
 		return users.get(i);
 	}
+
 
 }

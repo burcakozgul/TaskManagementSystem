@@ -21,8 +21,9 @@ public class Task {
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("Task{")
-				.append("userId = ")
+				.append("Task id = ")
+				.append(id)
+				.append(" {userId = ")
 				.append(userId)
 				.append(", name = ")
 				.append(name)
