@@ -10,10 +10,9 @@ public class ManagementSystemMain {
 		
 		tms.createUser("Burcak", UserType.DEVELOPER);
 		tms.createTask("PAYE", 0, TaskStatus.ANALYSIS, TaskPriority.HIGH );
-		
 		Scanner scan = new Scanner(System.in);
-		boolean a =true;
-		while(a) {
+		int count=0;
+		while(count<4) {
 			printMainMenu();
 			switch(getUserIntInput(scan)){
 				case 1:
@@ -32,12 +31,17 @@ public class ManagementSystemMain {
 					updateTaskUser(scan, tms);
 					break;
 				case 6:
-					a=false;
+					count=4;
 					System.out.println("Programdan çıkılıyor...");
-					break;
+					return;
 				default:
+					count++;
 					System.out.println("invalid value");
-					break;		
+					System.out.println("---------------------------------------");
+					if(count==4){
+						System.out.println("Programdan çıkılıyor...");
+					}
+					break;	
 			}
 		}
 	}
