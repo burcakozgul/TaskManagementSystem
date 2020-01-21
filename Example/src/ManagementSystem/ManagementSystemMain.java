@@ -40,29 +40,31 @@ public class ManagementSystemMain {
 					System.out.println("---------------------------------------");
 					if (count == 4) {
 						System.out.println("Exit the program");
+						return;
 					}
 					break;
 				}
 			} 
 			catch(TaskException e) {
 				print(e);
-			} catch(Exception e){
-				print(e);
-				return;
 			} 
+			catch (Exception e) {
+				print(e);
+				break;
+			}
 		}
 	}
-
-	private static void print(Object o) {
-		if (o instanceof String) {
-			System.out.println("Hatali giris yaptiniz");
+	static void print(Object o){
+		  if(o instanceof String){
+			  System.out.println("EXCEPTION");
+		  } else if(o instanceof TaskException){
+			  System.out.println("TASK EXCEPTION");
+		  }
+		  else if (o==null) {
+			System.out.println("Null Value");
 		}
-		if (o instanceof TypeError) {
-			System.out.println("task yok");
 		}
-		
-	}
-
+	
 	private static void printMainMenu() {
 		System.out.println("1-Create User");
 		System.out.println("2-Create Task");
